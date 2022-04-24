@@ -1,6 +1,6 @@
 { lib, ... }: {
   options.submodule = lib.mkOption {
-    type = lib.types.submoduleWith {
+    inherit (lib.evalModules {
       modules = [
         {
           options.inner = lib.mkOption {
@@ -9,7 +9,7 @@
           };
         }
       ];
-    };
+    }) type;
     default = {};
   };
 
